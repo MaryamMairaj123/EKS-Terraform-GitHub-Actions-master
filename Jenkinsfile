@@ -26,6 +26,10 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws-cred', region: 'eu-north-1') {
                 sh 'terraform -chdir=eks/ init' 
+                // sh 'terraform -chdir=eks/ init -migrate-state'  // Migrate the state to the new backend configuration
+                // sh 'terraform -chdir=eks/ init -reconfigure'  // Reconfigure backend without migrating state
+
+
                 }
             }
         }
